@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  root to: "movies#index"
   # Routes for the Location resource:
   # CREATE
   get "/locations/new", :controller => "locations", :action => "new"
