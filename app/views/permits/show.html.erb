@@ -1,0 +1,34 @@
+<div class="page-header">
+  <h3>Permit #<%= @permit.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Movie</dt>
+      <dd><%= @permit.movie_id %></dd>
+
+      <dt>Location</dt>
+      <dd><%= @permit.location_id %></dd>
+
+      <dt>Booked time</dt>
+      <dd><%= @permit.booked_time %></dd>
+
+      <dt>User</dt>
+      <dd><%= @permit.user_id %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/permits" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/permits/<%= @permit.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_permit/<%= @permit.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

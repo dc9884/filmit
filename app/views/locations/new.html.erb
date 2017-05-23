@@ -1,0 +1,71 @@
+<!-- Validation failure messages -->
+<% if @location.errors.any? %>
+  <% @location.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Location</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_location" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for location_name -->
+      <div class="form-group">
+        <label for="location_name" class="control-label">
+          Location name
+        </label>
+
+        <input type="text" id="location_name" name="location_name" placeholder="Location name" class="form-control" value="<%= @location.location_name %>">
+      </div>
+
+      <!-- Label and input for location_size -->
+      <div class="form-group">
+        <label for="location_size" class="control-label">
+          Location size
+        </label>
+
+        <input type="text" id="location_size" name="location_size" placeholder="Location size" class="form-control" value="<%= @location.location_size %>">
+      </div>
+
+      <!-- Label and input for location_private -->
+      <div class="checkbox">
+        <label for="location_private">
+          <input type="checkbox" id="location_private" name="location_private" value="1" <%= "checked" if @location.location_private %>>
+          Location private
+        </label>
+      </div>
+
+      <!-- Label and input for location_explosions -->
+      <div class="checkbox">
+        <label for="location_explosions">
+          <input type="checkbox" id="location_explosions" name="location_explosions" value="1" <%= "checked" if @location.location_explosions %>>
+          Location explosions
+        </label>
+      </div>
+
+      <!-- Label and input for location_address -->
+      <div class="form-group">
+        <label for="location_address" class="control-label">
+          Location address
+        </label>
+
+        <input type="text" id="location_address" name="location_address" placeholder="Location address" class="form-control" value="<%= @location.location_address %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Location
+      </button>
+      or
+      <a href="/locations">Cancel</a>
+    </form>
+  </div>
+</div>

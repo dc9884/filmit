@@ -1,0 +1,64 @@
+<!-- Validation failure messages -->
+<% if @movie.errors.any? %>
+  <% @movie.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Movie</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_movie" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for title -->
+      <div class="form-group">
+        <label for="title" class="control-label">
+          Title
+        </label>
+
+        <input type="text" id="title" name="title" placeholder="Title" class="form-control" value="<%= @movie.title %>">
+      </div>
+
+      <!-- Label and input for description -->
+      <div class="form-group">
+        <label for="description" class="control-label">
+          Description
+        </label>
+
+        <input type="text" id="description" name="description" placeholder="Description" class="form-control" value="<%= @movie.description %>">
+      </div>
+
+      <!-- Label and input for production_id -->
+      <div class="form-group">
+        <label for="production_id" class="control-label">
+          Production
+        </label>
+
+        <input type="text" id="production_id" name="production_id" placeholder="Production" class="form-control" value="<%= @movie.production_id %>">
+      </div>
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @movie.user_id %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Movie
+      </button>
+      or
+      <a href="/movies">Cancel</a>
+    </form>
+  </div>
+</div>
