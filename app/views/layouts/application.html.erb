@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Filmit</title>
+  <title>FilmIt</title>
 
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.5/paper/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.5/flatly/bootstrap.min.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
   <style>
@@ -34,22 +34,37 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a href="/" class="navbar-brand">Filmit</a>
+        <a href="/" class="navbar-brand">FilmIt</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
+          <li><a href="/movies">My Movies</a></li>
+          <li><a href="/permits">My Permits</a></li>
           <li><a href="/locations">Locations</a></li>
-          <li><a href="/permits">Permits</a></li>
-          <li><a href="/movies">Movies</a></li>
-          <li><a href="/rails/info">Sitemap</a></li>
+
+        <!-- <li><a href="/rails/info">Sitemap</a></li> -->
         </ul>
 
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="/users/edit">Dummy Edit Profile Link</a></li>
-          <li><a href="/users/sign_out" data-method="delete" rel="nofollow">Dummy Sign Out Link</a></li>
-        </ul>
+    <!-- if there is no signed in user -->
+    <% if current_user == nil %>
+
+    <!-- show a sign in and sign up link -->
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/users/sign_in">Sign In</a></li>
+      <li><a href="/users/sign_up" rel="nofollow">Sign Up</a></li>
+    </ul>
+
+    <!-- else show edit and sign out link -->
+    <% else %>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/users/edit"><%= current_user.first_name %></a></li>
+        <li><a href="/users/sign_out" data-method="delete" rel="nofollow"><i class="fa fa-fw fa-sign-out"></i>Sign Out</a></li>
+      </ul>
+
+    <% end %>
+
       </div><!-- /.navbar-collapse -->
     </div>
   </nav>
