@@ -1,6 +1,6 @@
 <div class="page-header">
   <h1>
-    Movies
+    <%= current_user.first_name %>'s Movies
     <a href="/movies/new" class="btn btn-lg btn-success">New Movie</a>
   </h1>
 </div>
@@ -12,16 +12,16 @@
         <th>Title</th>
         <th>Description</th>
         <th>Production</th>
-        <th>User</th>
+        <!-- <th>User</th> -->
         <th>Actions</th>
       </tr>
 
-      <% @movies.each do |movie| %>
+      <% @usermovies.each do |movie| %>
       <tr>
         <td><%= movie.title %></td>
         <td><%= movie.description %></td>
         <td><%= movie.production_id %></td>
-        <td><%= movie.user_id %></td>
+        <!-- <td><%= movie.user_id %></td> -->
         <td>
           <a href="/movies/<%= movie.id %>" class="btn btn-primary">Show</a>
           <a href="/movies/<%= movie.id %>/edit" class="btn btn-warning">Edit</a>

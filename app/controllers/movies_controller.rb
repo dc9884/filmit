@@ -1,6 +1,7 @@
 class MoviesController < ApplicationController
   def index
     @movies = Movie.all
+    @usermovies = Movie.where(:user_id => current_user.id)
 
     render("movies/index.html.erb")
   end

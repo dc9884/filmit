@@ -39,20 +39,14 @@
       <!-- Label and input for production_id -->
       <div class="form-group">
         <label for="production_id" class="control-label">
-          Production
+          Production ID
         </label>
 
         <input type="text" id="production_id" name="production_id" placeholder="Production" class="form-control" value="<%= @movie.production_id %>">
       </div>
 
       <!-- Label and input for user_id -->
-      <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
-
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @movie.user_id %>">
-      </div>
+      <input type="hidden" id="user_id" name="user_id" value="<%= current_user.id %>">
 
       <button class="btn btn-success">
         Create Movie
