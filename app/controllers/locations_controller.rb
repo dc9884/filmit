@@ -1,12 +1,16 @@
 class LocationsController < ApplicationController
   def index
     @locations = Location.all
+    @private = "Unknown"
+    @explostions = "Unknown"
 
     render("locations/index.html.erb")
   end
 
   def show
     @location = Location.find(params[:id])
+    @private = "Unknown"
+    @explostions = "Unknown"
 
     render("locations/show.html.erb")
   end

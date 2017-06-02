@@ -15,6 +15,9 @@ class Permit < ApplicationRecord
 
   #NEED CUSTOM VALIDATION FOR DATE AND TIME HERE
 
+  validates :booked_time, presence: true
+  validates :booked_end, presence: true
+
   belongs_to :movie
   belongs_to :user
   belongs_to :location

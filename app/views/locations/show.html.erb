@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h3>Location #<%= @location.id %></h3>
+  <h3><%= @location.location_name %></h3>
 </div>
 
 <div class="row">
@@ -8,19 +8,126 @@
       <dt>Location name</dt>
       <dd><%= @location.location_name %></dd>
 
-      <dt>Location size</dt>
+      <dt>Location size (sq. ft.)</dt>
       <dd><%= @location.location_size %></dd>
 
-      <dt>Location private</dt>
-      <dd><%= @location.location_private %></dd>
+      <dt>Private?</dt>
+      <% if @location.location_private == true
+          @private = "Yes"
+        else
+          @private = "No"
+        end
+        %>
+      <dd><%= @private %></dd>
 
-      <dt>Location explosions</dt>
-      <dd><%= @location.location_explosions %></dd>
+      <dt>Allows explosions?</dt>
+      <% if @location.location_explosions == true
+          @explosions = "Yes"
+        else
+          @explosions = "No"
+        end
+        %>
+      <dd><%= @explosions %></dd>
 
       <dt>Location address</dt>
       <dd><%= @location.location_address %></dd>
 
     </dl>
+
+    <br />
+
+<h3>Apply for a permit here</h3>
+    <div class="row">
+      <div class="col-md-12">
+        <form action="/create_permit" method="post">
+          <!-- Hidden input for authenticity token to protect from forgery -->
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+          <!-- Label and input for movie_id -->
+          <div class="form-group">
+            <label for="movie_id" class="control-label">
+              Movie
+            </label>
+
+            <%= select_tag(:movie_id, options_from_collection_for_select(Movie.where(:user_id => current_user.id), :id, :title), :class => "form-control") %>
+
+          </div>
+
+          <!-- Label and input for location_id -->
+            <input type="hidden" id="location_id" name="location_id" placeholder="Location" class="form-control" value="<%= @location.id %>">
+          </div>
+
+          <!-- Label and input for booked_time -->
+          <div class="form-group">
+            <label for="booked_time" class="control-label">
+              Start time
+            </label>
+
+
+          <!-- START TIME DATEPICKER -->
+            <div class="container">
+              <div class="row">
+                  <div class='col-sm-6'>
+                      <div class="form-group">
+                          <div class='input-group date' id='datetimepicker1'>
+                              <input type='text' class="form-control" id="booked_time" name="booked_time"/>
+                              <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-calendar"></span>
+                              </span>
+                          </div>
+                      </div>
+                  </div>
+                  <script type="text/javascript">
+                      $(function () {
+                          $('#datetimepicker1').datetimepicker();
+                      });
+                  </script>
+              </div>
+            </div>
+          </div>
+
+          <!-- Label and input for booked_end -->
+          <div class="form-group">
+            <label for="booked_end" class="control-label">
+              End time
+            </label>
+
+          <!-- END TIME DATEPICKER -->
+            <div class="container">
+              <div class="row">
+                  <div class='col-sm-6'>
+                      <div class="form-group">
+                          <div class='input-group date' id='datetimepicker2'>
+                              <input type='text' class="form-control" id="booked_end" name="booked_end"/>
+                              <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-calendar"></span>
+                              </span>
+                          </div>
+                      </div>
+                  </div>
+                  <script type="text/javascript">
+                      $(function () {
+                          $('#datetimepicker2').datetimepicker();
+                      });
+                  </script>
+              </div>
+            </div>
+          </div>
+
+          <!-- Label and input for user_id -->
+            <input type="hidden" id="user_id" name="user_id" value="<%= current_user.id %>">
+
+          <button class="btn btn-success">
+            Apply for a permit here
+          </button>
+          or
+          <a href="/permits">Cancel</a>
+        </form>
+
+    <div class="">
+    <br />  
+    </div>
+
 
     <div class="btn-group btn-group-justified">
       <a href="/locations" class="btn btn-primary">

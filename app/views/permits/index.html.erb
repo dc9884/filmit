@@ -19,13 +19,13 @@
 
       <% @permits.each do |permit| %>
       <tr>
-        <td><%= permit.movie_id %></td>
-        <td><%= permit.location_id %></td>
+        <td><%= permit.movie.title %></td>
+        <td><%= permit.location.location_name %></td>
         <td><%= permit.booked_time %></td>
         <td><%= permit.booked_end %></td>
         <td>
           <a href="/permits/<%= permit.id %>" class="btn btn-primary">Show</a>
-          <a href="/permits/<%= permit.id %>/edit" class="btn btn-warning">Edit</a>
+          <!-- <a href="/permits/<%= permit.id %>/edit" class="btn btn-warning">Edit</a> -->
           <a href="/delete_permit/<%= permit.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
         </td>
       </tr>
