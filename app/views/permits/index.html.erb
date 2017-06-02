@@ -11,8 +11,9 @@
       <tr>
         <th>Movie</th>
         <th>Location</th>
-        <th>Booked time</th>
-        <th>User</th>
+        <th>Start time</th>
+        <th>End time</th>
+        <!-- <th>User</th> -->
         <th>Actions</th>
       </tr>
 
@@ -21,7 +22,7 @@
         <td><%= permit.movie_id %></td>
         <td><%= permit.location_id %></td>
         <td><%= permit.booked_time %></td>
-        <td><%= permit.user_id %></td>
+        <td><%= permit.booked_end %></td>
         <td>
           <a href="/permits/<%= permit.id %>" class="btn btn-primary">Show</a>
           <a href="/permits/<%= permit.id %>/edit" class="btn btn-warning">Edit</a>

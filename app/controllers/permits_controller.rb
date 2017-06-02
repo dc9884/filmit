@@ -1,6 +1,7 @@
 class PermitsController < ApplicationController
   def index
     @permits = Permit.all
+    @userpermits = Permit.where(:user_id => current_user.id)
 
     render("permits/index.html.erb")
   end
@@ -23,6 +24,7 @@ class PermitsController < ApplicationController
     @permit.movie_id = params[:movie_id]
     @permit.location_id = params[:location_id]
     @permit.booked_time = params[:booked_time]
+    @permit.booked_end = params[:booked_end]
     @permit.user_id = params[:user_id]
 
     save_status = @permit.save

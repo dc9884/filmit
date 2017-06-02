@@ -12,6 +12,10 @@ end
 
 gem "devise"
 
+# Datepicker gems
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
+
 group :development do
   gem "annotate"
   gem "awesome_print"
