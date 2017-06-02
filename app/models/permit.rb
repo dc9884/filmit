@@ -12,7 +12,13 @@
 #
 
 class Permit < ApplicationRecord
+
+  #NEED CUSTOM VALIDATION FOR DATE AND TIME HERE
+
   belongs_to :movie
   belongs_to :user
   belongs_to :location
+
+
+
 end

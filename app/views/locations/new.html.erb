@@ -36,22 +36,6 @@
         <input type="text" id="location_size" name="location_size" placeholder="Location size" class="form-control" value="<%= @location.location_size %>">
       </div>
 
-      <!-- Label and input for location_private -->
-      <div class="checkbox">
-        <label for="location_private">
-          <input type="checkbox" id="location_private" name="location_private" value="1" <%= "checked" if @location.location_private %>>
-          Location private
-        </label>
-      </div>
-
-      <!-- Label and input for location_explosions -->
-      <div class="checkbox">
-        <label for="location_explosions">
-          <input type="checkbox" id="location_explosions" name="location_explosions" value="1" <%= "checked" if @location.location_explosions %>>
-          Location explosions
-        </label>
-      </div>
-
       <!-- Label and input for location_address -->
       <div class="form-group">
         <label for="location_address" class="control-label">
@@ -59,6 +43,22 @@
         </label>
 
         <input type="text" id="location_address" name="location_address" placeholder="Location address" class="form-control" value="<%= @location.location_address %>">
+      </div>
+
+      <!-- Label and input for location_private -->
+      <div class="checkbox">
+        <label for="location_private">
+          <input type="checkbox" id="location_private" name="location_private" value="1" <%= "checked" if @location.location_private %>>
+          Private property?
+        </label>
+      </div>
+
+      <!-- Label and input for location_explosions -->
+      <div class="checkbox">
+        <label for="location_explosions">
+          <input type="checkbox" id="location_explosions" name="location_explosions" value="1" <%= "checked" if @location.location_explosions %>>
+          Allows Explosions?
+        </label>
       </div>
 
       <button class="btn btn-success">

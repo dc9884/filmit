@@ -24,7 +24,9 @@
           Movie
         </label>
 
-        <input type="text" id="movie_id" name="movie_id" placeholder="Movie" class="form-control" value="<%= @permit.movie_id %>">
+        <%= select_tag(:movie_id, options_from_collection_for_select(Movie.where(:user_id => current_user.id), :id, :title), :class => "form-control") %>
+
+        <!-- <input type="text" id="movie_id" name="movie_id" placeholder="Movie" class="form-control" value="<%= @permit.movie_id %>"> -->
       </div>
 
       <!-- Label and input for location_id -->
@@ -33,7 +35,9 @@
           Location
         </label>
 
-        <input type="text" id="location_id" name="location_id" placeholder="Location" class="form-control" value="<%= @permit.location_id %>">
+        <%= select_tag(:location_id, options_from_collection_for_select(Location.all, :id, :location_name), :class => "form-control") %>
+
+        <!-- <input type="text" id="location_id" name="location_id" placeholder="Location" class="form-control" value="<%= @permit.location_id %>"> -->
       </div>
 
       <!-- Label and input for booked_time -->
@@ -46,13 +50,7 @@
       </div>
 
       <!-- Label and input for user_id -->
-      <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
-
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @permit.user_id %>">
-      </div>
+        <input type="hidden" id="user_id" name="user_id" value="<%= current_user.id %>">
 
       <button class="btn btn-success">
         Create Permit

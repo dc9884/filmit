@@ -14,6 +14,7 @@
 class Movie < ApplicationRecord
 
 validates :title, presence: true
+validates :production_id, presence: true
 
 has_many :permits, :dependent => :destroy
 belongs_to :user
