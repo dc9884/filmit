@@ -15,11 +15,6 @@ class Permit < ApplicationRecord
 
   validates :booked_time, presence: true
   validates :booked_end, presence: true
-
-  belongs_to :movie
-  belongs_to :user
-  belongs_to :location
-
   validate :location_not_already_booked
 
     def location_not_already_booked
@@ -33,5 +28,11 @@ class Permit < ApplicationRecord
         errors.add(:location_id, "The selected location is already booked during that time.")
       end
     end
+
+  belongs_to :movie
+  belongs_to :user
+  belongs_to :location
+
+
 
 end
