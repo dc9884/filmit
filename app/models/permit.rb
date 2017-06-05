@@ -22,6 +22,18 @@ class Permit < ApplicationRecord
   belongs_to :user
   belongs_to :location
 
+  validate :location_not_already_booked
 
+    def location_not_already_booked
+      same_location_permits = self.location.permits
+
+      start_time_overlaps = same_location_permits.where(:booked_time => self.booked_time..self.booked_end)
+
+      end_time_overlaps = same_location_permits.where(:booked_end => self.booked_time..self.booked_end)
+
+      if start_time_overlaps.any? || end_time_overlaps.any?
+        errors.add(:location_name, "already booked during that time")
+      end
+    end
 
 end
