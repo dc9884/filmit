@@ -13,8 +13,6 @@
 
 class Permit < ApplicationRecord
 
-  #NEED CUSTOM VALIDATION FOR DATE AND TIME HERE
-
   validates :booked_time, presence: true
   validates :booked_end, presence: true
 
@@ -32,7 +30,7 @@ class Permit < ApplicationRecord
       end_time_overlaps = same_location_permits.where(:booked_end => self.booked_time..self.booked_end)
 
       if start_time_overlaps.any? || end_time_overlaps.any?
-        errors.add(:location_name, "already booked during that time")
+        errors.add(:location_id, "The selected location is already booked during that time.")
       end
     end
 
